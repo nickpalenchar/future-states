@@ -5,11 +5,12 @@
 
 'use strict';
 import mongoose from 'mongoose';
-require('../api/todo/todo.model');
-require('../api/thing/thing.model');
-let Thing = mongoose.model('Thing'),
-    Todo = mongoose.model('Todo');
-
+let Todo = require('../api/todo/todo.model'),
+    Thing = require('../api/thing/thing.model'),
+    Agenda = require('../api/agenda/agenda.model'),
+    Event = require('../api/thing/thing.model'),
+    User = require('../api/thing/thing.model');
+    
 Thing.find({}).removeAsync()
   .then(() => {
     Thing.create({
@@ -1044,4 +1045,4 @@ Todo.find({}).removeAsync()
             {"task":"purus eu magna vulputate luctus","creationDate":"3/23/2016","dueDate":"5/24/2016","isDone":true},
             {"task":"eget congue eget semper rutrum nulla nunc purus","creationDate":"3/28/2016","dueDate":"5/29/2016","isDone":false},
             {"task":"sit amet eros suspendisse accumsan tortor quis turpis","creationDate":"3/7/2016","dueDate":"5/11/2016","isDone":true});
-    });
+    })

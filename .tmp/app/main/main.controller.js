@@ -1,45 +1,53 @@
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+// (function () {
+//
+//   class MainController {
+//
+//     constructor($http) {
+//       this.$http = $http;
+//       this.awesomeThings = [{
+//         name: "Sample Todos",
+//         info: "sample todos",
+//         sref: "todo_sample",
+//         active: true,
+//       }];
+//       //
+//       // $http.get('/api/things').then(response => {
+//       //     this.awesomeThings = this.awesomeThings.concat(response.data);
+//       // });
+//     }
+//
+//     addThing() {
+//       if (this.newThing) {
+//         this.$http.post('/api/things', {name: this.newThing});
+//         this.newThing = '';
+//       }
+//     }
+//
+//     deleteThing(thing) {
+//       this.$http.delete('/api/things/' + thing._id);
+//     }
+//   }
+//
+//
+//
+//
+//
+// })();
+//
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+angular.module('programmingWorkApp').controller('MainController', function ($http, User, $scope) {
+  var _this = this;
 
-(function () {
-    var MainController = (function () {
-        function MainController($http) {
-            _classCallCheck(this, MainController);
-
-            this.$http = $http;
-            this.awesomeThings = [{
-                name: "Sample Todos",
-                info: "sample todos",
-                sref: "todo_sample",
-                active: true
-            }];
-            //
-            // $http.get('/api/things').then(response => {
-            //     this.awesomeThings = this.awesomeThings.concat(response.data);
-            // });
-        }
-
-        _createClass(MainController, [{
-            key: "addThing",
-            value: function addThing() {
-                if (this.newThing) {
-                    this.$http.post('/api/things', { name: this.newThing });
-                    this.newThing = '';
-                }
-            }
-        }, {
-            key: "deleteThing",
-            value: function deleteThing(thing) {
-                this.$http["delete"]('/api/things/' + thing._id);
-            }
-        }]);
-
-        return MainController;
-    })();
-
-    angular.module('programmingWorkApp').controller('MainController', MainController);
-})();
+  User.getTodos().then(function () {
+    _this.awesomeThings = [{
+      name: "Sample Todos",
+      info: "sample todos",
+      sref: "todo_sample",
+      active: true
+    }];
+    $('splash-screen').fadeOut();
+  });
+});
 //# sourceMappingURL=main.controller.js.map
