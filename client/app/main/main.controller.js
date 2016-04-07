@@ -1,31 +1,36 @@
 'use strict';
 
-(function() {
+(function () {
 
-class MainController {
+    class MainController {
 
-  constructor($http) {
-    this.$http = $http;
-    this.awesomeThings = [];
+        constructor($http) {
+            this.$http = $http;
+            this.awesomeThings = [{
+                name: "Sample Todos",
+                info: "sample todos",
+                sref: "todo_sample",
+                active: true,
+            }];
+            //
+            // $http.get('/api/things').then(response => {
+            //     this.awesomeThings = this.awesomeThings.concat(response.data);
+            // });
+        }
 
-    $http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-    });
-  }
+        addThing() {
+            if (this.newThing) {
+                this.$http.post('/api/things', {name: this.newThing});
+                this.newThing = '';
+            }
+        }
 
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
+        deleteThing(thing) {
+            this.$http.delete('/api/things/' + thing._id);
+        }
     }
-  }
 
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
-  }
-}
-
-angular.module('programmingWorkApp')
-  .controller('MainController', MainController);
+    angular.module('programmingWorkApp')
+        .controller('MainController', MainController);
 
 })();
