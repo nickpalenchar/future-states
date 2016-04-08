@@ -7,7 +7,7 @@ angular.module('programmingWorkApp').config(function ($stateProvider) {
     controller: 'TodoSampleCtrl',
     resolve: {
       todos: function todos(User) {
-        return User.todos.slice(0, 100);
+        return User.todos;
       }
     }
 

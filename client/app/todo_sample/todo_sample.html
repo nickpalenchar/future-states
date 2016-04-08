@@ -1,7 +1,9 @@
-<header>These items are in the Front End</header>
-<div class="row">
-  <span>Active</span>
-  <div ng-repeat="item in todos" class="col col-xs-12">
-    <h2>{{item.task}}</h2>
+<div class="container">
+  <header>{{header}}</header>
+  <div class="row">
+    <span>Active</span>
+    <div ng-repeat="item in todos" class="col col-xs-12">
+      <h2>{{item.task}}</h2>
+    </div>
   </div>
 </div>

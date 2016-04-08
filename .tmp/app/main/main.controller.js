@@ -46,6 +46,14 @@ angular.module('programmingWorkApp').controller('MainController', function ($htt
       info: "sample todos",
       sref: "todo_sample",
       active: true
+    }, {
+      name: "Todos without resolve",
+      sref: "todo_noresolve",
+      active: true
+    }, {
+      name: "About",
+      sref: "about",
+      active: true
     }];
     $('splash-screen').fadeOut();
   });

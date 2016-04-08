@@ -9,7 +9,7 @@ angular.module('programmingWorkApp')
         controller: 'TodoSampleCtrl',
         resolve: {
           todos: function(User){
-            return User.todos.slice(0,100);
+            return User.todos;
           }
         }
 
