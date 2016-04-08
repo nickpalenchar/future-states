@@ -1,57 +1,26 @@
 'use strict';
 
-// (function () {
-//
-//   class MainController {
-//
-//     constructor($http) {
-//       this.$http = $http;
-//       this.awesomeThings = [{
-//         name: "Sample Todos",
-//         info: "sample todos",
-//         sref: "todo_sample",
-//         active: true,
-//       }];
-//       //
-//       // $http.get('/api/things').then(response => {
-//       //     this.awesomeThings = this.awesomeThings.concat(response.data);
-//       // });
-//     }
-//
-//     addThing() {
-//       if (this.newThing) {
-//         this.$http.post('/api/things', {name: this.newThing});
-//         this.newThing = '';
-//       }
-//     }
-//
-//     deleteThing(thing) {
-//       this.$http.delete('/api/things/' + thing._id);
-//     }
-//   }
-//
-//
-//
-//
-//
-// })();
-//
-
 angular.module('programmingWorkApp')
   .controller('MainController', function ($http, User, $scope) {
+
+    $scope.startTimer = function(){
+      console.time('stateChange');
+      window.begin = Date.now();
+    };
+
     User.getTodos()
       .then(() => {
         this.awesomeThings = [{
-          name: "Sample Todos",
+          name: "All todos (1000)",
           info: "sample todos",
-          sref: "todo_sample",
+          sref: "all_todos",
           active: true,
         },{
-          name: "Todos without resolve",
+          name: "Limited todos (50)",
           sref: "todo_noresolve",
           active: true,
         },{
-          name: "About",
+          name: "Render the smallest state (1 character)",
           sref: "about",
           active: true,
         }];

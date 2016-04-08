@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('programmingWorkApp').controller('AboutCtrl', function ($scope) {
+angular.module('programmingWorkApp').controller('AboutCtrl', function ($scope, Us) {
   $scope.message = 'Hello';
+  $scope.$on('timerReady', function () {
+    $scope.timer = User.timer;
+  });
 });
 //# sourceMappingURL=about.controller.js.map

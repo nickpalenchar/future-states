@@ -1,9 +1,12 @@
 <div class="container">
   <header>{{header}}</header>
   <div class="row">
-    <span>Active</span>
-    <div ng-repeat="item in todos" class="col col-xs-12">
+    <code ng-cloak>Total elapsed time: {{timer}}ms</code>
+  </div>
+  <div class="row">
+      <div ng-repeat="item in todos | limitTo: itemCap" class="col col-xs-12" on-finish-render>
       <h2>{{item.task}}</h2>
     </div>
   </div>
+  <button ng-if="!!loadMore && itemCap < todos.length" class="btn btn-default" ng-click="loadMore()">Load Moar!</button>
 </div>
